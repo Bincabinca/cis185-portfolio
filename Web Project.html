@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My First Web Page</title>
+        <style>
+        body {
+            
+            font-family: Monaco, monospace;
+            margin: 40px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        
+        p {
+            color: rgb(48, 2, 16);
+            font-size: 20px;
+        }
+        
+        .highlight {
+            background-color: rgb(247, 149, 165);
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #special-paragraph {
+            font-family: Lucida Handwriting, Cursive;
+            color: rgb(48, 2, 16);
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+       .box1, .box2 {
+            padding: 20px;
+            background-color: lightcoral;
+        }
+    </style>
+    </head>
+    <body style="background-color: rgb(255, 207, 143);">
+        
+        <h1 id="special-paragraph"><strong>This is my first ever webpage design!</strong></h1>
+        
+        <header>
+            <img src="https://lynnvale.com/wp-content/uploads/2017/12/Dahlia-Banner-2-copy.jpg" alt="Dahlias" width="768" height="188" > 
+        </header>
+
+        <p class="highlight">This is an image of my favorite flowers, dahlias.</p>
+       
+        <div class="container">
+            <div class="box1"> 
+                <p id="special-paragraph">These are some of the basics we've learned:</p>
+                <ul> <li> <p>This is a paragraph!</p> </li> </ul>
+                <ul> <li> <p>This text is <strong>bold</strong> and this is <em>italic</em>!</p> </li> </ul>
+                
+            </div>
+
+            <div class="box2">
+                <p id="special-paragraph">This is a second box with no other content!</p>
+                <p>But it's still meaningful!</p>
+            </div>
+        </div>
+
+            <p>Click <a href="https://www.neopets.com/userlookup.phtml?user=bincabinca">here</a> to visit my Neopets page.</p>
+            <p>It will also be improving as I learn more about web design!</p>
+            <p style="font-size: 10px;">&copy;2025 Bianca Powers. All rights reserved.</p>
+    </body>
+</html>
