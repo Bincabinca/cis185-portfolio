@@ -3,53 +3,82 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
         <title>Personal Portfolio Page</title>
-        
-        <style>
-            .container {
-            display: grid;
-            grid-template-areas:
-                "header header"
-                "menu content"
-                "footer footer";
-            grid-template-columns: 1fr 3fr;
-            gap: 5px;
-            background-color: #ff80b1;
-            padding: 5px;
-            }
-            .container > div {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            }
-            .container > div.header {
-            grid-area: header;
-            text-align: center;
-            }
-            .container > div.menu {
-            grid-area: menu;
-            }
-            .container > div.content {
-            grid-area: content;
-            }
-            .container > div.footer {
-            grid-area: footer;
-            }
-        </style>
     </head>
-
+    
     <body>
+    <!-- Header section with name and navigation links -->
+    <header>
+        <h1 style="text-align:center;">Bianca Powers</h1>
+        <!-- Navigation anchor links -->
+        <p style="text-align:center;"><a class="header-link" href="#projects">Projects</a> | <a class="header-link" href="#contact">Contact</a></p>
+    </header>
 
-        <h1>CSS Grid Layout</h1>
+    <h2 style="text-align:center;">Web Developer and Designer</h2>
+    
+    <!-- Brief biography and qualifications section-->
+    <table border="1" width="100%">
+        <tr>
+            <td>
+                <h3>About Me</h3>
+                <p>I am a 26 year-old web developer with a passion for cats and creating engaging user experiences.</p>
+                <p>With two years of experience, I have worked on various projects involving front-end and back-end technologies.</p>
+                <p>Check out my GitHub to see my work and contributions.<a href="https://github.com/Bincabinca">Visit My GitHub</a></p>
+            </td>
+            <td>
+                <h3>Academic Qualifications</h3>
+                <p>Bachelor of Science in Computer Science from A. College.</p>
+                <p>Specializations:</p>
+                <ul>
+                    <li>Webpage development</li>
+                    <li>Desktop application development</li>
+                    <li>Database systems</li>
+                    <li>Cybersecurity and networking</li>
+                    <li>AI integration</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
 
-        <div class="container">
-        <div class="header"><h2>Portfolio of Bianca Powers</h2></div>
-        <div class="menu"><a href="#">Link 1</a><br><a href="#">Link 2</a><br><a href="#">Link 3</a></div>
-        <div class="content"><h3>Project Card 1</h3><p>Interesting project.</p>
-        <h4>Project Card 2</h4><p>Another interesting project.</p>
-        <h5>Project Card 3</h5><p>A third and final interesting project.</p></div>
-        <div class="footer"><h6>Footer</h6></div>
-        </div>
+    <!-- Section to display my projects -->
+    <h2 id="projects">Projects</h2>
+    <table border="1" width="100%">
+        <tr>
+            <td>Designing this personal portfolio to display my work and skills!</td>
+            <td>An even more impressive project showcasing even more skills!</td>
+            <td>A third and final astounding project that utilizes advanced HTML and CSS techniques!</td>
+        </tr>
+    </table>
+
+    <!-- Section for my contact information -->
+    <h2 id="contact">Contact Information</h2>
+    <table border="1" width="100%">
+        <tr>
+            <td>Email: <a href="mailto:fakeEmail@gmail.com">fakeEmail@gmail.com</a></td>
+            <td>Phone: <a href="tel:1234567890">(123)-456-7890</a></td>
+        </tr>
+    </table>
+
+    <!-- Section for users to contact me -->
+    <h2>Contact Form</h2>
+    <form action="mailto:fakeEmail@gmail.com" method="post" enctype="text/plain">
+        Name:<br>
+        <input type="text" name="name" required><br>
+        Email:<br>
+        <input type="email" name="email" required><br>
+        Message:<br>
+        <textarea name="message" rows="4" cols="50" required></textarea><br><br>
+        <input type="submit" value="Send" class="button">
+        <input type="reset" value="Clear" class="button">
+    </form>
+
+    </table>
+
+    <!-- Copyright footer -->
+    <footer style="text-align:center;">
+        &copy;2025 Bianca Powers. All rights reserved.
+    </footer>
 
     </body>
 </html>
