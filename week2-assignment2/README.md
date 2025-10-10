@@ -1,3 +1,6 @@
+Flexbox was used to create and align rows for the different sections of my portfolio.
+
+Requirements:
 - Create a single-page personal portfolio
 - Use external CSS file (no inline/embedded styles)
 - Include at least 3 sections (header, about, projects)
