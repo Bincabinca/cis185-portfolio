@@ -1,9 +1,11 @@
-/* Set default margins and paddings */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Default styles (mobile-first approach) */
+.container { width: 100%; padding: 10px; }
+
+/* Tablet styles (768px and up) */
+@media screen and (min-width: 768px) { .container { width: 750px; padding: 20px; } }
+
+/* Desktop styles (1024px and up) */
+@media screen and (min-width: 1024px) { .container { width: 960px; padding: 30px; } }
 
 /* Body styling */
 body {
@@ -26,13 +28,13 @@ header {
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 5vw;
     font-family: "Copperplate Gothic Light", sans-serif;
     margin-bottom: 10px;
 }
 
 header p {
-    font-size: 1.1em;
+    font-size: 2.5vw;
 }
 
 /* Main heading */
@@ -40,7 +42,7 @@ h2 {
     font-family: "Copperplate Gothic Light", sans-serif;
     color: #1f264d;
     margin: 20px 0;
-    font-size: 1.8em;
+    font-size: 3.5vw;
 }
 
 /* Table styling */
@@ -61,7 +63,7 @@ table td {
 h3 {
     color: #1f264d;
     margin-bottom: 15px;
-    font-size: 1.4em;
+    font-size: 2.5vw;
 }
 
 /* List styling */
@@ -116,7 +118,7 @@ a.header-link:hover {
     color: rgb(255, 230, 218);
     border-radius: 15px; /* Rounded corners */
     border-color: #1f264d;
-    font-size: 1em;
+    font-size: 2vw;
 }
 
 /* Paragraph spacing */
@@ -151,14 +153,14 @@ footer {
     }
     
     header h1 {
-        font-size: 2em;
+        font-size: 2vw;
     }
     
     h2 {
-        font-size: 1.5em;
+        font-size: 1.5vw;
     }
     
     h3 {
-        font-size: 1.2em;
+        font-size: 1.2vw;
     }
 }
