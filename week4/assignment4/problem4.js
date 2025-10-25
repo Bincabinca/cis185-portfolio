@@ -8,30 +8,46 @@
 
 function createPyramid(height) {
     // Build a centered pyramid of asterisks (*)
-    // Example: height = 3 →
-    //   *
-    //  ***
-    // *****
-    // Return as a string with \n between lines
+    let result = "";
+    for (let i = 0; i < height; i++) {
+        // Add spaces
+        for (let j = 0; j < height - i - 1; j++) {
+            result += " ";
+        }
+        // Add stars
+        for (let k = 0; k < 2 * i + 1; k++) {
+            result += "*";
+        }
+        result += "\n";
+    }
+    return result;
 }
 
 function createNumberStaircase(steps) {
     // Build a staircase of increasing numbers
-    // Example: steps = 5 →
-    // 1
-    // 12
-    // 123
-    // 1234
-    // 12345
+    let result = "";
+    for (let i = 1; i <= steps; i++) {
+        for (let j = 1; j <= i; j++) {
+            result += j;
+        }
+        result += "\n";
+    }
+    return result;
 }
 
 function createCheckerboard(size) {
-    // Create a checkerboard pattern of X and O
-    // Example: size = 4 →
-    // XOXO
-    // OXOX
-    // XOXO
-    // OXOX
+    let result = "";
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            if ((i + j) % 2 === 0) {
+                result += "X";
+            } else {
+                result += "O";
+            }
+        }
+        result += "\n";
+    }
+    return result;
 }
 
 //Expected Outputs:
