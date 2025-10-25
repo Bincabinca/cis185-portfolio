@@ -1,4 +1,5 @@
- //Create a comprehensive temperature conversion system with multiple functions.
+// Problem 1: Temperature Converter Suite (10 points)
+// Create a comprehensive temperature conversion system with multiple functions.
 // Complete these functions
 let temperature = 0;
 
@@ -42,7 +43,7 @@ function getTemperatureDescription(fahrenheit) {
     }
 }
 
-//Test Cases:
+// Test Cases:
 console.log(celsiusToFahrenheit(0)); // 32
 console.log(celsiusToFahrenheit(100)); // 212
 console.log(celsiusToFahrenheit(-40)); // -40
