@@ -3,6 +3,9 @@
 // Each function should return the full pattern as a single string,
 // with each line separated by a \n character.
 
+//💡 Hint: For the pyramid: - Spaces = height - row - 1 - Stars = 2 * row + 1
+// Combine each line with \n at the end.
+
 function createPyramid(height) {
     // Build a centered pyramid of asterisks (*)
     // Example: height = 3 →
@@ -30,39 +33,28 @@ function createCheckerboard(size) {
     // XOXO
     // OXOX
 }
-Expected Outputs:
 
-createPyramid(3) →
+//Expected Outputs:
+console.log(createPyramid(3));
+//   *
+//  ***
+// *****
 
-  *
- ***
-*****
-    
+console.log(createPyramid(4));
+//    *
+//   ***
+//  *****
+// *******
 
-createPyramid(4) →
+console.log(createNumberStaircase(5));
+// 1
+// 12
+// 123
+// 1234
+// 12345
 
-   *
-  ***
- *****
-*******
-    
-
-createNumberStaircase(5) →
-
-1
-12
-123
-1234
-12345
-    
-
-createCheckerboard(4) →
-
-XOXO
-OXOX
-XOXO
-OXOX
-    
-
-💡 Hint: For the pyramid: - Spaces = height - row - 1 - Stars = 2 * row + 1 Combine each line with \n at the end.
-
+console.log(createCheckerboard(4));
+// XOXO
+// OXOX
+// XOXO
+// OXOX

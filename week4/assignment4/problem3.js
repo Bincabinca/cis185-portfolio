@@ -21,15 +21,15 @@ function curveGrades(scores, curveAmount) {
     // Cap all scores at 100 (no score above 100)
     // Return new array, don't modify original
 }
-Test Cases:
-calculateAverage([80, 90, 70]) → 80
-calculateAverage([100, 50, 75]) → 75
-calculateAverage([]) → 0
-dropLowestScore([80, 90, 70, 85]) → [80, 90, 85]
-dropLowestScore([50, 50, 75, 100]) → [50, 75, 100]
-getLetterGrade(95) → "A"
-getLetterGrade(82) → "B"
-getLetterGrade(58) → "F"
-curveGrades([85, 95, 70], 10) → [95, 100, 80]
-curveGrades([90, 96, 80], 5) → [95, 100, 85]
 
+// Test Cases:
+console.log(calculateAverage([80, 90, 70])); // 80  
+console.log(calculateAverage([100, 50, 75])); // 75
+console.log(calculateAverage([])); // 0
+console.log(dropLowestScore([80, 90, 70, 85])); // [80, 90, 85]
+console.log(dropLowestScore([50, 50, 75, 100])); // [50, 75, 100]
+console.log(getLetterGrade(95)); // "A"
+console.log(getLetterGrade(82)); // "B"
+console.log(getLetterGrade(58)); // "F"
+console.log(curveGrades([85, 95, 70], 10)); // [95, 100, 80]
+console.log(curveGrades([90, 96, 80], 5)); // [95, 100, 85]

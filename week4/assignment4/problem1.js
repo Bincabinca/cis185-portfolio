@@ -1,6 +1,6 @@
 // Problem 1: Temperature Converter Suite (10 points)
 // Create a comprehensive temperature conversion system with multiple functions.
-// Complete these functions
+
 let temperature = 0;
 
 function celsiusToFahrenheit(celsius) {

@@ -16,14 +16,13 @@ function decimalToHexadecimal(decimal) {
     // Use 0-9 and A-F for digits
     // Don't use toString(16)!
 }
-Test Cases:
-decimalToBinary(10) → "1010"
-decimalToBinary(25) → "11001"
-decimalToBinary(0) → "0"
-binaryToDecimal("1010") → 10
-binaryToDecimal("11111") → 31
-binaryToDecimal("0") → 0
-decimalToHexadecimal(255) → "FF"
-decimalToHexadecimal(26) → "1A"
-decimalToHexadecimal(16) → "10"
-
+// Test Cases:
+console.log(decimalToBinary(10)); // "1010"
+console.log(decimalToBinary(25)); // "11001"
+console.log(decimalToBinary(0)); // "0"
+console.log(binaryToDecimal("1010")); // 10
+console.log(binaryToDecimal("11111")); // 31
+console.log(binaryToDecimal("0")); // 0
+console.log(decimalToHexadecimal(255)); // "FF"
+console.log(decimalToHexadecimal(26)); // "1A"
+console.log(decimalToHexadecimal(16)); // "10"
