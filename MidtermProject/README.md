@@ -48,3 +48,4 @@
         ## 9. Credits
         - Images from [source] - Icons from [source] - Tutorials used: [links]
         - AI assistance as noted in Section 7
+        - https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4#file-snake-html-L122-L133
