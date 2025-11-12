@@ -1,0 +1,195 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Set default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Century Gothic', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #000000;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 10px solid #00ffff;
+    height: auto;
+}
+
+.outline {
+  color: rgb(0, 182, 206);
+  text-shadow: -1px -1px 0 #00ffff, 1px -1px 0 #ff0000, -1px 1px 0 #0026ff, 1px 1px 0 #0026ff;
+  font-weight: bold;
+}
+
+/* Header styling */
+header {
+    background-color: #0f0000;
+    color: rgb(255, 230, 218);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 6px solid #00ffff;
+    height: auto;
+}
+
+header h1 {
+    font-size: 6em;
+    font-family: "Copperplate Gothic Light", sans-serif;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+header p {
+    font-size: 1.1em;
+}
+
+/* Main heading */
+h2 {
+    font-family: "Copperplate Gothic Light", sans-serif;
+    color: #1f264d;
+    margin: 20px 0;
+    font-size: 3em;
+    text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-rows: 200px 200px; /* 2 rows of 200px */
+  gap: 20px; /* Space between grid items */
+} 
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: rgb(255, 230, 218);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+table td {
+    padding: 20px;
+    vertical-align: top;
+    border: 3px solid #53111a;
+}
+
+h3 {
+    color: #1f264d;
+    margin-bottom: 15px;
+    font-size: 2em;
+    text-align: center;
+    position: top;
+}
+
+/* List styling */
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+ul li::before {
+    content: '•'; /* Bullet points */
+    color: #1f264d;
+    position: absolute;
+    left: -20px;
+}
+
+/* Links */
+a {
+    color: #00ffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Hover over link effect */
+a:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+/* Links in the header */
+a.header-link {
+    color: #00ffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Hover over header-link effect */
+a.header-link:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+/* Button styling */
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #53111a;
+    color: rgb(255, 230, 218);
+    border-radius: 15px; /* Rounded corners */
+    border-color: #1f264d;
+    font-size: 1em;
+}
+
+/* Paragraph spacing */
+p {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #00ffff;
+}
+
+/* Footer styling */
+footer {
+    background-color: #0f0000;
+    color: #00ffff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    table {
+        display: block;
+    }
+    
+    table tr {
+        display: block;
+        margin-bottom: 20px;
+    }
+    
+    table td {
+        display: block;
+        border: none;
+        border-bottom: 1px solid #53111a;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    h3 {
+        font-size: 1.2em;
+    }
+}

@@ -48,4 +48,8 @@
         ## 9. Credits
         - Images from [source] - Icons from [source] - Tutorials used: [links]
         - AI assistance as noted in Section 7
+        
+        Edited open source code from Steven Lambert (GitHub username: straker) for mini games:
         - https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4#file-snake-html-L122-L133
+        - https://gist.github.com/straker/81b59eecf70da93af396f963596dfdc5
+        - https://gist.github.com/straker/b96a4a68bd6d79cf75a833d98a2b654f
