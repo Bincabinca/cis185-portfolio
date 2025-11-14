@@ -10,10 +10,16 @@
         and story to attract local customers and create an online presence for
         our business."
 
+        This is a website for playing classic minigames! The classic games includes 
+        and are limited to: Snake, Pong, and Platform Jumper. 
+
         ## 2. Target Audience
         Who will use your website? Why? Example: "Local coffee enthusiasts
         aged 20-40 who are looking for a comfortable workspace or meeting
         spot."
+
+        The target audience is young children, who may not be ready for the full scope of gaming,
+        as well as older gamers looking to play their favorite classic, nostalgic games.
 
         ## 3. Main Features
         - Feature 1: (e.g., Interactive menu with prices) - Feature 2: (e.g.,
@@ -41,9 +47,16 @@
         None: Did not use any AI tools [Be honest and specific about AI
         assistance]
 
+        The GitHub Copilot was helpful when I would get stuck on codem and would
+        suggest other solutions.
+
         ## 8. Future Improvements
         What would you add with more time? - Online ordering system - Customer
         reviews section - Newsletter signup
+
+        If I had more time, I would have liked to tinker a bit more with the games.
+        Adding features such as play/pause menus and saving/displaying scores.
+        Also adding a larger variety of games!
 
         ## 9. Credits
         - Images from [source] - Icons from [source] - Tutorials used: [links]

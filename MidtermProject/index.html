@@ -11,7 +11,7 @@
 
     
     <header>
-        <h1 class="outline">Mini Games</h1>
+        <h1 class="neonText">Mini Games</h1>
         <!-- Navigation anchor links -->
         <nav>
         <p style="text-align:center;">
@@ -39,7 +39,17 @@
         <p style="text-align:center;"><a href="./snake.html">Play Snake</a></p>
         <p style="text-align:center;"><a href="./pong.html">Play Pong</a></p>
         <p style="text-align:center;"><a href="./jumper.html">Play Platform Jumper</a></p>
+        <p style="text-align:center;"><a href="#">Play Minecraft</a></p>
       </div>
+
+      <!-- when you click Play Minecraft a pop-up message will appear -->
+      <script>
+        const minecraftLink = document.querySelector('a[href="#"]');
+        minecraftLink.addEventListener('click', function(event) {
+          event.preventDefault();
+          alert('Minecraft is not available yet. Stay tuned for future updates!');
+        });
+      </script>
 
       <!-- Copyright footer -->
     <footer style="text-align:center;">
