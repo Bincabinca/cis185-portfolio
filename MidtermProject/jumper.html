@@ -3,7 +3,7 @@
 <head>
   <title>Platform Jumper</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
@@ -19,25 +19,30 @@
   }
 
   canvas {
-    border: 1px solid black;
+    border: 6px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
   }
   </style>
 </head>
 <body>
 
     <!-- link back to index.html homepage-->
-  <p style="position:absolute; top:10px; left:10px; color:white;">
-    <h3> <a href="./index.html">← Return to Homepage</a></h3>
-  </p>
+  <div class="game-container">
+    <div class="top-text">
+      <h3><a class="neonText" href="./index.html">← Return to Homepage</a></h3>
+    </div>
 
-<canvas width="375" height="667" id="game"></canvas>
+    <canvas width="375" height="667" id="game"></canvas>
+  </div>
+
+
 <script>
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
 // width and height of each platform and where platforms start
 const platformWidth = 65;
-const platformHeight = 20;
+const platformHeight = 15;
 const platformStart = canvas.height - 50;
 
 // player physics
@@ -169,7 +174,7 @@ function loop() {
   }
 
   // draw platforms
-  context.fillStyle = 'green';
+  context.fillStyle = '#00ffff';
   platforms.forEach(function(platform) {
     context.fillRect(platform.x, platform.y, platformWidth, platformHeight);
 
@@ -195,7 +200,7 @@ function loop() {
   });
 
   // draw doodle
-  context.fillStyle = 'yellow';
+  context.fillStyle = '#9300c0';
   context.fillRect(doodle.x, doodle.y, doodle.width, doodle.height);
 
   prevDoodleY = doodle.y;
@@ -229,6 +234,44 @@ document.addEventListener('keyup', function(e) {
 
 // start the game
 requestAnimationFrame(loop);
+
+// if doodle falls below the bottom of the screen, reset the game
+setInterval(function() {
+  if (doodle.y > canvas.height) {
+    // reset doodle position
+    doodle.x = canvas.width / 2 - 20;
+    doodle.y = platformStart - 65;
+    doodle.dx = 0;
+    doodle.dy = 0;
+
+    // reset platforms
+    platforms = [{
+      x: canvas.width / 2 - platformWidth / 2,
+      y: platformStart
+    }];
+
+    let y = platformStart;
+    while (y > 0) {
+      y -= platformHeight + random(minPlatformSpace, maxPlatformSpace);
+
+      let x;
+      do {
+        x = random(25, canvas.width - 25 - platformWidth);
+      } while (
+        y > canvas.height / 2 &&
+        x > canvas.width / 2 - platformWidth * 1.5 &&
+        x < canvas.width / 2 + platformWidth / 2
+      );
+
+      platforms.push({ x, y });
+    }
+
+    // reset platform spacing
+    minPlatformSpace = 100;
+    maxPlatformSpace = 200;
+  }
+}, 1000);
+
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <title>Pong</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
@@ -20,19 +20,27 @@
   }
   </style>
 </head>
+
+
 <body>
 
-    <!-- link back to index.html homepage-->
-  <p style="position:absolute; top:10px; left:10px; color:white;">
-    <h3> <a href="./index.html">← Return to Homepage</a></h3>
-  </p>
+  <div class="game-container">
+    <div class="top-text">
+      <h3><a class="neonText" href="./index.html">← Return to Homepage</a></h3>
+    </div>
 
-<canvas width="750" height="585" id="game"></canvas>
-<script>
+  <canvas width="750" height="585" id="game" style="border: 6px solid #00ffff;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;"></canvas>
+
+  </div>
+
+  
+
+  <script>
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
-const grid = 15;
-const paddleHeight = grid * 5; // 80
+const grid = 10;
+const paddleHeight = grid * 8; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
 var paddleSpeed = 6;
@@ -62,8 +70,8 @@ const ball = {
   // start in the middle of the game
   x: canvas.width / 2,
   y: canvas.height / 2,
-  width: grid,
-  height: grid,
+  width: grid * 2,
+  height: grid * 2,
 
   // keep track of when need to reset the ball position
   resetting: false,
@@ -154,10 +162,11 @@ function loop() {
   }
 
   // draw ball
+  context.fillStyle = 'red';
   context.fillRect(ball.x, ball.y, ball.width, ball.height);
 
   // draw walls
-  context.fillStyle = 'lightgrey';
+  context.fillStyle = '#00ffff';
   context.fillRect(0, 0, canvas.width, grid);
   context.fillRect(0, canvas.height - grid, canvas.width, canvas.height);
 

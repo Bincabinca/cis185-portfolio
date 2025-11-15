@@ -3,7 +3,7 @@
 <head>
   <title>Snake</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
@@ -19,21 +19,42 @@
     justify-content: center;
   }
   canvas {
-    border: 1px solid white;
+    border: 6px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 400px;
+    height: 400px;
   }
+
+  @media (max-width: 500px) {
+    .top-text {
+      top: -50px;
+      font-size: 0.9rem;
+    }
+    .bottom-text {
+      bottom: -100px;
+      font-size: 0.85rem;
+    }
+    canvas {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
   </style>
 </head>
+
 <body>  
-  
-  <!-- link back to index.html homepage-->
-  <p style="position:absolute; top:10px; left:10px; color:white;">
-    <h3> <a href="./index.html">← Return to Homepage</a></h3>
-  </p>
 
-  <!-- use external JavaScript file for game logic -->
-  <script src="./js/script.js"></script>
+  <div class="game-container">
+    <div class="top-text">
+      <h3><a class="neonText" href="./index.html">← Return to Homepage</a></h3>
+    </div>
+    
+    <canvas width="400" height="400" id="game"></canvas>
+  </div>
 
-<canvas width="400" height="400" id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -123,7 +144,7 @@ function loop() {
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
   // draw snake one cell at a time
-  context.fillStyle = 'green';
+  context.fillStyle = '#9300c0';
   snake.cells.forEach(function(cell, index) {
 
     // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is

@@ -26,14 +26,14 @@ body {
 }
 
 .outline {
-  color: rgb(0, 182, 206);
-  text-shadow: -1px -1px 0 #00ffff, 1px -1px 0 #ff0000, -1px 1px 0 #0026ff, 1px 1px 0 #0026ff;
+  color: #0d4850;
+  text-shadow: -1px -1px 0 #00ffff, 1px -1px 0 #af0000, -1px 1px 0 #00ffff, 1px 1px 0 #0d4850;
   font-weight: bold;
 }
 
 /* Header styling */
 header {
-    background-color: #0f0000;
+    background-color: #000a0a;
     color: rgb(255, 230, 218);
     padding: 20px;
     border-radius: 8px;
@@ -57,114 +57,25 @@ header p {
 /* Main heading */
 h2 {
     font-family: "Copperplate Gothic Light", sans-serif;
-    color: #1f264d;
+    color: #2f0d3a;
     margin: 20px 0;
     font-size: 3em;
     text-align: center;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-  grid-template-rows: 200px 200px; /* 2 rows of 200px */
-  gap: 20px; /* Space between grid items */
-} 
-
-/* Table styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: rgb(255, 230, 218);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-table td {
-    padding: 20px;
-    vertical-align: top;
-    border: 3px solid #53111a;
+    border: 6px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
 }
 
 h3 {
-    color: #1f264d;
-    margin-bottom: 15px;
+    font-family: "Copperplate Gothic Light", sans-serif;
+    color: #2f0d3a;
+    margin: 20px 0;
     font-size: 2em;
     text-align: center;
-    position: top;
-}
-
-/* List styling */
-ul {
-    list-style-type: none;
-    padding-left: 20px;
-}
-
-ul li {
-    margin-bottom: 10px;
-    position: relative;
-}
-
-ul li::before {
-    content: '•'; /* Bullet points */
-    color: #1f264d;
-    position: absolute;
-    left: -20px;
-}
-
-.neonText {
-  color: #fff;
-  text-shadow:
-    /* White glow */
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-
-    /* Colored glow */
-    0 0 42px #0fa,
-    0 0 82px #0fa,
-    0 0 92px #0fa,
-    0 0 102px #0fa;
-}
-
-/* Links */
-a {
-    color: #00ffff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-/* Hover over link effect */
-a:hover {
-    color: #ff0000;
-    text-decoration: underline;
-}
-
-/* Links in the header */
-a.header-link {
-    color: #00ffff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-/* Hover over header-link effect */
-a.header-link:hover {
-    color: #ff0000;
-    text-decoration: underline;
-}
-
-/* Button styling */
-.button {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #53111a;
-    color: rgb(255, 230, 218);
-    border-radius: 15px; /* Rounded corners */
-    border-color: #1f264d;
-    font-size: 1em;
 }
 
 /* Paragraph spacing */
 p {
+    font-size: 1.5em;
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;
@@ -173,39 +84,110 @@ p {
 
 /* Footer styling */
 footer {
-    background-color: #0f0000;
     color: #00ffff;
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    table {
-        display: block;
-    }
-    
-    table tr {
-        display: block;
-        margin-bottom: 20px;
-    }
-    
-    table td {
-        display: block;
-        border: none;
-        border-bottom: 1px solid #53111a;
-    }
-    
-    header h1 {
-        font-size: 2em;
-    }
-    
-    h2 {
-        font-size: 1.5em;
-    }
-    
-    h3 {
-        font-size: 1.2em;
-    }
+/* Links */
+a {
+    color: #00ffff;
+    text-decoration: none;
+    transition: color .8s;
 }
+
+/* Hover over link effect */
+a:hover {
+    color: #af0000;
+    text-decoration: underline;
+}
+
+.grid-container {
+  display: grid;
+  gap: 20px; /* Space between grid items */
+  grid-template-areas: 
+    "item1 item3"
+    "item2 item3"
+    "item4 item6"
+    "item5 item6"
+    "item7 item9"
+    "item8 item9"
+    "item10 item12"
+    "item11 item12";
+    text-align: center;
+}
+
+/* Neon text effect */
+.neonText {
+    animation: flicker 2s infinite alternate;
+    color: #fff;
+    text-shadow:
+        /* White glow */
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+
+        /* Colored glow */
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa;
+}
+
+/* Flickering animation */
+@keyframes flicker {
+    
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 80px #0fa,
+      0 0 90px #0fa,
+      0 0 100px #0fa,
+      0 0 150px #0fa;
+  
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+  }    
+}
+
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Position relative so children with absolute positioning
+     are positioned relative to the game area */
+  .game-container {
+    position: relative;
+    display: inline-block; /* shrink-wrap to canvas width */
+  }
+
+  /* Top text positioned relative to .game-container */
+  .top-text {
+    position: absolute;
+    top: -13%; /* Place text above canvas */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    z-index: 1000;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+  .top-text h3 {
+    margin: 0;
+    padding: 0;
+  }
+  .top-text a {
+    color: white;
+    text-decoration: none;
+  }

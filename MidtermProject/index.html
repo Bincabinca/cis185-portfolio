@@ -1,58 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Homepage</title>
   </head>
   <body>
-
     
     <header>
         <h1 class="neonText">Mini Games</h1>
+
+        <!-- Clock display --> 
+        <h3 id="MyClockDisplay" class="outline" style="text-align:center;"></h3>
+        <script src="js/script.js"></script>
+
         <!-- Navigation anchor links -->
         <nav>
         <p style="text-align:center;">
-          <a class="header-link" href="#about">About</a> |
-          <a class="header-link" href="#games">Games</a> |
-          <a class="header-link" href="./snake.html">Snake</a> |
-          <a class="header-link" href="./pong.html">Pong</a> |
-          <a class="header-link" href="./jumper.html">Platform Jumper</a>
+          <a href="#about">About</a> |
+          <a href="#games">Games</a> |
+          <a href="./snake.html">Snake</a> |
+          <a href="./pong.html">Pong</a> |
+          <a href="./jumper.html">Platform Jumper</a>
         </p>
         </nav>
     </header>
 
-    <!-- about section-->
+    <!-- About section-->
     <h2 class="outline" id="about">About</h2>
     <p style="text-align:center;">
-      This is a collection of mini games created as part of my Midterm Project for CIS 185: HTML, CSS, and JavaScript. 
-      The games included are Snake, Pong, and Platform Jumper. Each game is implemented using HTML5 Canvas and JavaScript.
+      This is a collection of the best mini games created for my CIS 185 Midterm Project.<br>
+      The games included are Snake, Pong, and Platform Jumper.<br>
+      Each element of this webpage is implemented using HTML, CSS, and JavaScript.<br>
+      You can find more of my work on my GitHub profile <a href="https://github.com/Bincabinca"><u>here</u></a>.<br>
+      If you would like to contact me, please reach out via email at <a href="mailto:FakeEmail@gmail.com"><u>FakeEmail@gmail.com</u></a>.
     </p>
 
     <!-- Games section with short descriptions and pictures -->
     <h2 class="outline" id="games">Games</h2>
 
-      <!-- grid layout for game links -->
-      <div class="grid-container">
-        <p style="text-align:center;"><a href="./snake.html">Play Snake</a></p>
-        <p style="text-align:center;"><a href="./pong.html">Play Pong</a></p>
-        <p style="text-align:center;"><a href="./jumper.html">Play Platform Jumper</a></p>
-        <p style="text-align:center;"><a href="#">Play Minecraft</a></p>
+      <!-- Grid layout for game links -->
+      <div class="grid-container" id="grid-container">
+
+        <!-- Snake Game -->
+        <p class="neonText" style="grid-area: item1;"><a href="./snake.html">Play Snake</a></p>
+        <p style="grid-area: item2;">Use WASD or the arrow keys to move around.<br>Eat the red apples to grow.<br>Don't run into the walls or yourself!</p>
+        <div style="text-align:center; grid-area: item3;">
+          <img src="images/snake.png" alt="Snake Game Screenshot" width="200"> <!-- Image for snake game -->
+        </div>
+
+        <!-- Pong Game -->
+        <p class="neonText" style="text-align:center; grid-area: item4;"><a href="./pong.html">Play Pong</a></p>
+        <p style="text-align:center; grid-area: item5;">Use W/S and the up/down arrow keys to move the paddles.<br>Try to bounce the ball between the paddles as long as you can!</p>
+        <div style="text-align:center; grid-area: item6;">
+          <img src="images/pong.png" alt="Pong Game Screenshot" width="200"> <!-- Image for pong game -->
+        </div>
+
+        <!-- Platform Jumper Game -->
+        <p class="neonText" style="text-align:center; grid-area: item7;"><a href="./jumper.html">Play Platform Jumper</a></p>
+        <p style="text-align:center; grid-area: item8;">Use A/D or the left/right arrow keys to move the block.<br>Jump on the platforms to keep from falling!</p>
+        <div style="text-align:center; grid-area: item9;">
+          <img src="images/jumper.png" style="height:90%;" alt="Platform Jumper Game Screenshot"> <!-- Image for platform jumper game -->
+        </div>
+
+        <!-- Minecraft -->
+        <p class="neonText" style="text-align:center; grid-area: item10;"><a href="MC">Play Minecraft</a></p>
+        <p style="grid-area: item11;">"Minecraft is a game made up of blocks, creatures, and community. 
+          You can survive the night or build a work of art – the choice is all yours. 
+          But if the thought of exploring a vast new world all on your own feels overwhelming, then fear not! 
+          Let’s explore what Minecraft is all about!"</p>
+        <div style="text-align:center; grid-area: item12;">
+          <img src="images/Minecraft.png" style="width:30%;" alt="Minecraft Game Titlescreen"> <!-- Image for Minecraft -->
+        </div>
+
       </div>
 
-      <!-- when you click Play Minecraft a pop-up message will appear -->
+      <!-- Pop-up message for Minecraft link -->
       <script>
-        const minecraftLink = document.querySelector('a[href="#"]');
+        const minecraftLink = document.querySelector('a[href="MC"]');
         minecraftLink.addEventListener('click', function(event) {
           event.preventDefault();
-          alert('Minecraft is not available yet. Stay tuned for future updates!');
+          alert('Minecraft is not available.');
         });
       </script>
 
-      <!-- Copyright footer -->
-    <footer style="text-align:center;">
+      <!-- Copyright footer B) -->
+    <footer class="neonText" style="text-align:center;">
         &copy;2025 Bianca Powers. All rights reserved.
     </footer>
     

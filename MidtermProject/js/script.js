@@ -1,74 +1,29 @@
-//move snake game logic from snake.html to this file
-var context = canvas.getContext('2d');
-var box = 20;
-var snake = [];
-snake[0] = {
-    x: 9 * box,
-    y: 10 * box
-};
-var food = {
-    x: Math.floor(Math.random() * 19 + 1) * box,
-    y: Math.floor(Math.random() * 19 + 1) * box
-};
-var score = 0;
-var d;
-document.addEventListener("keydown", direction);
-function direction(event) {
-    if (event.keyCode == 37 && d != "RIGHT") {
-        d = "LEFT";
-    } else if (event.keyCode == 38 && d != "DOWN") {
-        d = "UP";
-    } else if (event.keyCode == 39 && d != "LEFT") {
-        d = "RIGHT";
-    } else if (event.keyCode == 40 && d != "UP") {
-        d = "DOWN";
-    }  
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+    
+    setTimeout(showTime, 1000);
+    
 }
-function collision(head, array) {
-    for (var i = 0; i < array.length; i++) {
-        if (head.x == array[i].x && head.y == array[i].y) {
-            return true;
-        }
-    }
-    return false;
-}   
-function draw() {
-    context.fillStyle = "black";
-    context.fillRect(0, 0, 400, 400);
-    for (var i = 0; i < snake.length; i++) {
-        context.fillStyle = (i == 0) ? "green" : "white";
-        context.fillRect(snake[i].x, snake[i].y, box, box);
-        context.strokeStyle = "red";
-        context.strokeRect(snake[i].x, snake[i].y, box, box);
-    }
-    context.fillStyle = "red";
-    context.fillRect(food.x, food.y, box, box);
-    var snakeX = snake[0].x;
-    var snakeY = snake[0].y;
-    if (d == "LEFT") snakeX -= box;
-    if (d == "UP") snakeY -= box;
-    if (d == "RIGHT") snakeX += box;
-    if (d == "DOWN") snakeY += box;
-    if (snakeX == food.x && snakeY == food.y) {
-        score++;
-        food = {
-            x: Math.floor(Math.random() * 19 + 1) * box,
-            y: Math.floor(Math.random() * 19 + 1) * box
-        };
-    } else {
-        snake.pop();
-    }
-    var newHead = {
-        x: snakeX,
-        y: snakeY
-    };
-    if (snakeX < 0 || snakeX >= 400 || snakeY < 0 || snakeY >= 400 || collision(newHead, snake)) {
-        clearInterval(game);
-        alert("Game Over! Your score: " + score);
-    }
-    snake.unshift(newHead);
-    context.fillStyle = "white";
-    context.font = "20px Arial";
-    context.fillText("Score: " + score, 10, 20);
-}
-var game = setInterval(draw, 100);
+
+showTime();
