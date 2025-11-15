@@ -116,6 +116,8 @@ a:hover {
     "item10 item12"
     "item11 item12";
     text-align: center;
+    grid-template-rows: 20px 1fr 20px;
+    grid-template-columns: 1fr 1fr;
 }
 
 /* Neon text effect */
