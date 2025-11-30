@@ -19,7 +19,7 @@ function countLeaves(days) {
             totalLeaves += 10;
         }
         else {
-            totalLeaves += 20 + (i - 2) * 10;
+            totalLeaves += 10 * (i - 1);
         }
     }
 
@@ -29,13 +29,7 @@ function countLeaves(days) {
 }
 
 function categorizeLeafColors(leaves) {
-    // leaves is an array of color strings
-    let leaves = [
-        "red",
-        "yellow",
-        "red",
-        "brown"
-    ];
+    
     // Count each color and return an object
     let colorCount = {};
 

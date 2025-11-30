@@ -1,23 +1,21 @@
 // Problem 1: Temperature Converter Suite (10 points)
 // Create a comprehensive temperature conversion system with multiple functions.
 
-let temperature = 0;
-
 function celsiusToFahrenheit(celsius) {
     // Convert Celsius to Fahrenheit
     // Formula: (C × 9/5) + 32
-    temperature = (celsius * 9/5) + 32;
+    let temperature = (celsius * 9/5) + 32;
     return temperature;
 }
 
 function fahrenheitToCelsius(fahrenheit) {
     // Convert Fahrenheit to Celsius
     // Formula: (F - 32) × 5/9
-    temperature = (fahrenheit - 32) * 5/9;
+    let temperature = (fahrenheit - 32) * 5/9;
     return temperature;
 }
 
-function getTemperatureDescription(fahrenheit) {
+function getTemperatureDescription(temperature) {
     // Return description based on temperature:
     switch(temperature) {
         // Below 32: "Freezing"
