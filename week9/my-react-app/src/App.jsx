@@ -16,7 +16,30 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Login to continue...</h1>
+
+      {/* Login form */}
+      <form>
+        <label>
+          Username:
+          <input type="text" name="username" />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input type="password" name="password" />
+        </label>
+        <br />
+        <button type="submit">Login</button>
+
+        {/* Go to profile page once logged in */}
+
+        <a href="/profile"></a>
+
+        {/* Validate input on submit */}
+
+      </form>
+      
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -26,7 +49,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Click on ur mom and React logos to learn more
       </p>
     </>
   )
