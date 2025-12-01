@@ -1,19 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
-function Profile1() {
-{/* Profile details */}
+{/*
+    function UserProfile() {
+    const [user, setUser] = useState({
+        name: "",
+        role: "",
+        bio: "",
+        skills: []
+    });
 
-const name = "John Doe";
-const role = "Software Engineer";
-const bio = "Experienced developer specializing in web applications.";
-const skills = ["JavaScript", "React", "Node.js"];
+return (
+    <ProfileCard
+        name={user.name}
+        role={user.role}
+        bio={user.bio}
+        isOnline={true}
+        skills={user.skills}
+        onChange={(newInfo) => setUser(newInfo)}
+        />
+    );
 
-}
+} */}
+
+const UserProfile = [
+    {
+        name: "Zak Hussain",
+        role: "Professor and Robotics Engineer",
+        bio: "Passionate about teaching and building innovative robotic systems. And giving me a good grade.",
+        isOnline: true,
+        skills: ["HTML", "CSS", "JavaScript", "React", "Robotics", "AI", "Generous Grading"],
+    },
+    {
+        name: "Bianca Powers",
+        role: "Software Engineer",
+        bio: "Passionate about creating interactive user experiences and getting good grades.",
+        isOnline: false,
+        skills: ["HTML", "CSS", "JavaScript", "React"],
+    }
+]
 
 function ProfileCard({ name, role, bio, isOnline, skills }) {
+
     return (
         <div className="user-profile">
             <h1>Welcome, {name}</h1>
@@ -36,13 +64,6 @@ function LoginStatus() {
 
     return (
         <div>
-            {/* Method 1: Ternary operator */}
-            {isLoggedIn ? (
-                <p>Welcome back!</p>
-            ) : (
-                <p>Please log in.</p>
-            )}
-
             {/* Method 2: Logical AND */}
             {isLoggedIn && <button>Logout</button>}
         </div>

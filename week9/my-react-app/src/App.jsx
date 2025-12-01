@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
@@ -12,33 +12,15 @@ function App() {
             alt="Task List logo"
             style={{ height: "300px"}}/>
       </div>
-      <h1>Login to continue...</h1>
+      <h1>Choose a profile to continue...</h1>
     
-      {/* Login form */}
-      <form name="myForm" onSubmit={validateForm}>
+      {/* Choose a profile to view */}
 
-        <label>Username:<span> </span>
-          <input type="text" name="username" />
-        </label>
-
-        <br />
-        <br />
-
-        <label>Password:<span> </span> 
-          <input type="password" name="password" />
-        </label>
-
-        <br />
-        <br />
-
-        <button type="submit">Login</button>
-
-        {/* Go to profile page on click */}
-
-        {/* Validate input on submit */}
-
-      </form>
+      <a href="#">Zak</a> <span> </span> or <span> </span> <a href="#">Bianca</a>
       
+      <h1>Todo List:</h1>
+      <TodoApp />
+
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -66,5 +48,40 @@ function validateForm() {
     return false;
   }
 } 
+
+function TodoApp() {
+    const [todos, setTodos] = useState([]);
+    const [input, setInput] = useState("");
+
+    useEffect(() => {
+        document.title = `${todos.length} todos`;
+    }, [todos]);
+
+    const addTodo = () => {
+        if (input.trim()) {
+            setTodos([...todos, { id: Date.now(), text: input }]);
+            setInput("");
+        }
+    };
+
+    const removeTodo = (id) => {
+        // Remove from array - filter out
+        setTodos(todos.filter(todo => todo.id !== id));
+    };
+
+    return (
+        <div>
+            <input value={input} onChange={(e) => setInput(e.target.value)} />
+            <br /> <br />
+            <button onClick={addTodo}>Add</button>
+            <br /> <br />
+            <button onClick ={removeTodo}>Remove</button>
+            <br /> <br />
+            <button onClick={() => setTodos([])}>Clear All</button>
+
+            <ul>{todos.map(t => <li key={t.id}>{t.text}</li>)}</ul>
+        </div>
+    );
+}
 
 export default App
