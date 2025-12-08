@@ -16,28 +16,30 @@ function fahrenheitToCelsius(fahrenheit) {
 }
 
 function getTemperatureDescription(temperature) {
-    // Return description based on temperature:
-    switch(temperature) {
-        // Below 32: "Freezing"
-        case temperature < 32:
-            return "Freezing";
-            break;
-        // 32-50: "Cold"
-        case temperature >= 32 && temperature <= 50:
-            return "Cold";
-            break;
-        // 51-70: "Cool"
-        case temperature >= 51 && temperature <= 70:
-            return "Cool";
-            break;  
-        // 71-85: "Warm"
-        case temperature >= 71 && temperature <= 85:
-            return "Warm";
-            break;
-        // Above 85: "Hot"
-        case temperature > 85:
-            return "Hot";
-            break;  
+    // Return description based on temperature
+    // Below 32: "Freezing"
+    if (temperature < 32) {
+        return "Freezing";
+    }
+
+    // 32-50: "Cold"
+    if (temperature >= 32 && temperature <= 50) {
+        return "Cold";
+    }
+
+    // 51-70: "Cool"
+    if (temperature >= 51 && temperature <= 70) {
+        return "Cool";
+    }
+
+    // 71-85: "Warm"
+    if (temperature >= 71 && temperature <= 85) {
+        return "Warm";
+    }
+    
+    // Above 85: "Hot"
+    if (temperature > 85) {
+        return "Hot";
     }
 }
 

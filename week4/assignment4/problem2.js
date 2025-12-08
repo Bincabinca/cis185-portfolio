@@ -4,7 +4,6 @@
 
 //💡 Hint: For the first function, notice the pattern changes after day 1.
 // For the second, you'll need to check if a color already exists in your object before counting.
-
 let totalLeaves = 0;
 
 function countLeaves(days) {
@@ -14,6 +13,8 @@ function countLeaves(days) {
     // Day 3: 30 leaves (+10 from day 2)
     // Day 4: 40 leaves (+10 from day 3)
     // Pattern: First day doubles, then +10 each day
+    
+    // Use a for loop to calculate total leaves
     for(let i = 1; i <= days; i++) {
         if (i === 1) {
             totalLeaves += 10;
@@ -22,10 +23,9 @@ function countLeaves(days) {
             totalLeaves += 10 * (i - 1);
         }
     }
-
-    // Use a for loop to calculate total
-    // the return outputTotal will be a string. refer to the example outputs to see the format. 
-    return outputTotal;
+    
+    // the return totalLeaves will be a string. refer to the example outputs to see the format. 
+    return totalLeaves.toString();
 }
 
 function categorizeLeafColors(leaves) {
