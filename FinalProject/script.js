@@ -4,6 +4,7 @@ window.addEventListener('load', function(){
     const ctx = canvas.getContext('2d');
     canvas.width = 800;
     canvas.height = 720;
+    let enemies = [];
 
     class InputHandler {
         constructor() {
@@ -16,7 +17,7 @@ window.addEventListener('load', function(){
                         e.key === 'ArrowRight'
                         && this.keys.indexOf(e.key) === -1) {
                     this.keys.push(e.key);
-                }-
+                }
             });
             window.addEventListener('keyup', e => {
                 //When e is released, if it is arrow down find index and splice to remove it
@@ -47,8 +48,6 @@ window.addEventListener('load', function(){
             this.weight = 0; //Gravity effect
         }
         draw(context) {
-            context.fillStyle = 'white';
-            context.fillRect(this.x, this.y, this.width, this.height);
             //Source x, source y, source width, source height, destination x, destination y, destination width, destination height
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
         }
@@ -85,10 +84,9 @@ window.addEventListener('load', function(){
             this.y += this.vy;
             //Vertical boundaries
             if (this.y > this.gameHeight - this.height) this.y = this.gameHeight - this.height;
-        
-            onGround(){
-                return this.y >= this.gameHeight - this.height; //If player is standing on solid ground
-                }
+        }
+        onGround(){
+            return this.y >= this.gameHeight - this.height; //If player is standing on solid ground
             }
         }
 
@@ -116,9 +114,40 @@ window.addEventListener('load', function(){
     }
 
     class Enemy {
+        constructor(gameWidth, gameHeight) {
+            this.gameWidth = gameWidth;
+            this.gameHeight = gameHeight;
+            //Check art asset size for single frame dimensions
+            this.width = 160;
+            this.height = 119;
+            this.image = document.getElementById('enemyImage');
+            this.x = this.gameWidth; //Start at right edge of screen
+            this.y = this.gameHeight - this.height;
+            this.frameX = 0;
+            this.speed = 8;
+        }
+        draw(context) {
+            //Source x, source y, source width, source height, destination x, destination y, destination width, destination height
+            //Sprite sheet only has one row, so source y is always 0
+            context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+        }
+        update() {
+            this.x -= this.speed;
+        }
     }
-
+    
+    enemies.push(new Enemy(canvas.width, canvas.height)); //Add initial enemy on page load
     function handleEnemies() {
+        if (enemyTimer > enemyInterval + randomEnemyInterval) {
+            enemies.push(new Enemy(canvas.width, canvas.height));
+            enemyTimer = 0;
+        } else {
+            enemyTimer += deltaTime;
+        }
+        enemies.forEach(enemy => {
+            enemy.draw(ctx);
+            enemy.update();
+        });
     }
 
     function displayStatusText() {
@@ -129,12 +158,24 @@ window.addEventListener('load', function(){
     const player = new Player(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
 
-    function animate() {
+    let lastTime = 0;
+    let enemyTimer = 0; //Time since last enemy spawned
+    let enemyInterval = 1000; //Spawn enemy every 1 second
+    let randomEnemyInterval = Math.random() * 1000 + 500; //Randomize enemy spawn time
+
+    function animate(timeStamp) {
+        const deltaTime = timeStamp - lastTime; //Time difference between current and last frame
+        lastTime = timeStamp; //... so it can be used for the next loop
+
         ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas between each animation loop
         background.draw(ctx); //Draw background first so player displays on top
+        
         player.draw(ctx);
         player.update(input);
+
+        handleEnemies();
+
         requestAnimationFrame(animate); //Calls animate function over and over to create loop
     }
-    animate();
+    animate(0);
 });
