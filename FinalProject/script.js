@@ -334,6 +334,14 @@ window.addEventListener('load', function(){
             context.fillText('Final Score: ' + score, canvas.width / 2, 260);
             context.fillStyle = 'white';
             context.fillText('Final Score: ' + score, canvas.width / 2 + 2, 262);
+
+            //Is this allowed?
+            context.font = '15px Helvetica';
+            context.fillStyle = 'black';
+            context.fillText('©2025 Bianca Powers. All rights reserved.', 650, 710);
+            context.fillStyle = 'white';
+            context.fillText('©2025 Bianca Powers. All rights reserved.', 652, 712);
+            
         }
     }
 
