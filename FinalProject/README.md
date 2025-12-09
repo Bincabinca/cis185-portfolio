@@ -21,3 +21,6 @@ Presentations notes.
 2. Show it in action in the browser, and show the features you built.
 3. Show the code! start with showing the file tree structure and how you organized your code.
 4. Then talk about the classes or components you have made -- being sure to show code you were most excited to build.
+
+NOTES:
+If I had more time, I would like to create and implement my own character and background assets to the game.

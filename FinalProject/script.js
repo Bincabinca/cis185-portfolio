@@ -7,6 +7,8 @@ window.addEventListener('load', function(){
     let enemies = [];
     let score = 0;
     let gameOver = false;
+    let health = 3; //Number of hits before game over
+    let lastCollisionTime = 0; //Prevent multiple collisions in quick succession
 
     class InputHandler {
         constructor() {
@@ -77,7 +79,14 @@ window.addEventListener('load', function(){
                 const dy = (enemy.y + enemy.height/2) - (this.y + this.height/2);
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < enemy.width/2 + this.width/2) {
-                    gameOver = true;
+                    //Only take damage once per collision (check 500ms cooldown)
+                    if (Date.now() - lastCollisionTime > 500) {
+                        health--;
+                        lastCollisionTime = Date.now();
+                        if (health <= 0) {
+                            gameOver = true;
+                        }
+                    }
                 }
             });
 
@@ -214,18 +223,58 @@ window.addEventListener('load', function(){
     }
 
     function displayStatusText(context) {
-        context.font = '40px Helvetica';
-        context.fillStyle = 'black';
-        context.fillText('Score: ' + score, 20, 50);
-        //Text shadow trick to avoid lag caused when using Firefox textStroke
-        context.fillStyle = 'white';
-        context.fillText('Score: ' + score, 22, 52);
+        //Display score and lives during gameplay
+        if (!gameOver) {
+            context.font = '40px Helvetica';
+            context.fillStyle = 'black';
+            context.fillText('Score: ' + score, 20, 50);
+            //Text shadow trick to avoid lag caused when using Firefox textStroke
+            context.fillStyle = 'white';
+            context.fillText('Score: ' + score, 22, 52);
+            
+            //Display lives
+            context.fillStyle = 'black';
+            context.fillText('Lives: ' + health, 620, 50);
+            context.fillStyle = 'white';
+            context.fillText('Lives: ' + health, 622, 52);
+            
+            //Draw health bar
+            const healthBarWidth = 150;
+            const healthBarHeight = 25;
+            const healthBarX = 620;
+            const healthBarY = 70;
+            
+            //Draw health bar border
+            context.strokeStyle = 'black';
+            context.lineWidth = 2;
+            context.strokeRect(healthBarX, healthBarY, healthBarWidth, healthBarHeight);
+            
+            //Draw health bar
+            const fillWidth = healthBarWidth * health / 3;
+            
+            //Color changes from green to red based on health
+            if (health == 3) {
+                context.fillStyle = '#00AA00'; //Green
+            } else if (health == 2) {
+                context.fillStyle = '#FFAA00'; //Orange
+            } else {
+                context.fillStyle = '#FF0000'; //Red
+            }
+            context.fillRect(healthBarX, healthBarY, fillWidth, healthBarHeight);
+        }
+        //Display game over text and final score
         if (gameOver) {
             context.textAlign = 'center';
             context.fillStyle = 'black';
-            context.fillText('GAME OVER, try again!', canvas.width / 2, 200);
+            context.fillText('GAME OVER', canvas.width / 2, 200);
             context.fillStyle = 'white';
-            context.fillText('GAME OVER, try again!', canvas.width / 2 + 2, 202);
+            context.fillText('GAME OVER', canvas.width / 2 + 2, 202);
+
+            //Final score display
+            context.fillStyle = 'black';
+            context.fillText('Final Score: ' + score, canvas.width / 2, 260);
+            context.fillStyle = 'white';
+            context.fillText('Final Score: ' + score, canvas.width / 2 + 2, 262);
         }
     }
 
@@ -233,11 +282,40 @@ window.addEventListener('load', function(){
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
+    const restartBtn = document.getElementById('restartBtn');
 
     let lastTime = 0;
     let enemyTimer = 0; //Time since last enemy spawned
     let enemyInterval = 1000; //Spawn enemy every 1 second
     let randomEnemyInterval = Math.random() * 1000 + 500; //Randomize enemy spawn time
+
+    function restartGame() {
+        //Reset all game variables
+        enemies = [];
+        score = 0;
+        gameOver = false;
+        health = 3;
+        lastCollisionTime = 0;
+        lastTime = 0;
+        enemyTimer = 0;
+        randomEnemyInterval = Math.random() * 1000 + 500;
+        
+        //Reset player position
+        player.x = 0;
+        player.y = player.gameHeight - player.height;
+        
+        //Reset background
+        background.x = 0;
+        
+        //Hide restart button
+        restartBtn.style.display = 'none';
+        
+        //Resume animation
+        animate(0);
+    }
+    
+    //Add click event listener to restart button
+    restartBtn.addEventListener('click', restartGame);
 
     function animate(timeStamp) {
         const deltaTime = timeStamp - lastTime; //Time difference between current and last frame
@@ -256,6 +334,7 @@ window.addEventListener('load', function(){
 
         //Calls animate function over and over to create loop until gameOver is true
         if (!gameOver) requestAnimationFrame(animate);
+        else restartBtn.style.display = 'block'; //Only show restart button when game is over
     }
     animate(0);
 });
