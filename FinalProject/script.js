@@ -93,11 +93,11 @@ window.addEventListener('load', function(){
             //Controls:
             //When positive, player moves right, when negative player moves left
             if (input.keys.indexOf('ArrowRight') > -1) {
-                this.speed = 5;
+                this.speed = 10;
             } else if (input.keys.indexOf('ArrowLeft') > -1) {
-                this.speed = -5;
+                this.speed = -10;
             } else if (input.keys.indexOf('ArrowUp') > -1 && this.onGround()) { //Ensure player can only jump when on ground
-                this.vy -= 32; //Jump strength
+                this.vy -= 30; //Jump strength
             } else{
                 this.speed = 0;
             }
@@ -138,7 +138,7 @@ window.addEventListener('load', function(){
             this.y = 0;
             this.width = 2400;
             this.height = 720;
-            this.speed = 20;
+            this.speed = 10;
         }
         draw(context) {
             //Draw two images side by side to create looping effect
