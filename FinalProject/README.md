@@ -23,6 +23,8 @@ Presentations notes.
 4. Then talk about the classes or components you have made -- being sure to show code you were most excited to build.
 
 NOTES:
+Assets from: https://bevouliin.com/
+
 If I had more time, I would like to create and implement my own character and background assets to the game.
 
 CoPilot help me to solve an issue of the "Score: " and "Lives: " text both shifting left upon pressing the "Restart" button. This happened because the "GAME OVER" text was being aligned in the center, and that wasn't resetting when the game restarted. Simply adding:

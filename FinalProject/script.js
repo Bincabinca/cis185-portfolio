@@ -5,6 +5,7 @@ window.addEventListener('load', function(){
     canvas.width = 800;
     canvas.height = 720;
     let enemies = [];
+    let bones = [];
     let score = 0;
     let gameOver = false;
     let health = 3; //Number of hits before game over
@@ -73,7 +74,7 @@ window.addEventListener('load', function(){
         }
         //To move player around
         update(input, deltaTime, enemies) {
-            //Collision detection
+            //Collision detection with enemies
             enemies.forEach(enemy => {
                 const dx = (enemy.x + enemy.width/2) - (this.x + this.width/2);
                 const dy = (enemy.y + enemy.height/2) - (this.y + this.height/2);
@@ -86,6 +87,20 @@ window.addEventListener('load', function(){
                         if (health <= 0) {
                             gameOver = true;
                         }
+                    }
+                }
+            });
+
+            //Collision detection with bones
+            bones.forEach((bone, index) => {
+                const dx = (bone.x + bone.width/2) - (this.x + this.width/2);
+                const dy = (bone.y + bone.height/2) - (this.y + this.height/2);
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < bone.width/2 + this.width/2) {
+                    bone.markedForDeletion = true;
+                    //Increase health but cap at 3
+                    if (health < 3) {
+                        health++;
                     }
                 }
             });
@@ -210,7 +225,7 @@ window.addEventListener('load', function(){
     function handleEnemies(deltaTime) {
         if (enemyTimer > enemyInterval + randomEnemyInterval) {
             enemies.push(new Enemy(canvas.width, canvas.height));
-            randomEnemyInterval = Math.random() * 1000 + 500; //Randomize enemy spawn time
+            randomEnemyInterval = Math.random() * 1000; //Randomize enemy spawn time
             enemyTimer = 0;
         } else {
             enemyTimer += deltaTime;
@@ -220,6 +235,47 @@ window.addEventListener('load', function(){
             enemy.update(deltaTime);
         });
         enemies = enemies.filter(enemy => !enemy.markedForDeletion);
+    }
+
+    class Bone {
+        constructor(gameWidth, gameHeight) {
+            this.gameWidth = gameWidth;
+            this.gameHeight = gameHeight;
+            this.width = 80;
+            this.height = 50;
+            this.image = document.getElementById('boneImage');
+            this.x = this.gameWidth;
+            this.y = Math.random() * this.gameHeight - this.height - 100; //Float above ground
+            this.speed = 5;
+            this.markedForDeletion = false;
+        }
+
+        draw(context) {
+            //Randomize the height that bones appear
+            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        }
+
+        update(deltaTime) {
+            this.x -= this.speed;
+            if (this.x < 0 - this.width) {
+                this.markedForDeletion = true;
+            }
+        }
+    }
+
+    function spawnBone(deltaTime) {
+        if (boneTimer > boneInterval + randomBoneInterval) {
+            bones.push(new Bone(canvas.width, canvas.height));
+            randomBoneInterval = Math.random() * 50000; //Randomize bone spawn time (rarer than enemies)
+            boneTimer = 0;
+        } else {
+            boneTimer += deltaTime;
+        }
+        bones.forEach(bone => {
+            bone.draw(ctx);
+            bone.update(deltaTime);
+        });
+        bones = bones.filter(bone => !bone.markedForDeletion);
     }
 
     function displayStatusText(context) {
@@ -291,10 +347,15 @@ window.addEventListener('load', function(){
     let enemyTimer = 0; //Time since last enemy spawned
     let enemyInterval = 1000; //Spawn enemy every 1 second
     let randomEnemyInterval = Math.random() * 1000 + 500; //Randomize enemy spawn time
+    
+    let boneTimer = 0; //Time since last bone spawned
+    let boneInterval = 1500; //Spawn bone every 1.5 seconds
+    let randomBoneInterval = Math.random() * 2000 + 1000; //Randomize bone spawn time
 
     function restartGame() {
         //Reset all game variables
         enemies = [];
+        bones = [];
         score = 0;
         gameOver = false;
         health = 3;
@@ -303,6 +364,8 @@ window.addEventListener('load', function(){
         lastTime = 0;
         enemyTimer = 0;
         randomEnemyInterval = Math.random() * 1000 + 500;
+        boneTimer = 0;
+        randomBoneInterval = Math.random() * 2000 + 1000;
         
         //Reset player position
         player.x = 0;
@@ -333,6 +396,7 @@ window.addEventListener('load', function(){
         player.update(input, deltaTime, enemies);
 
         handleEnemies(deltaTime);
+        spawnBone(deltaTime);
 
         displayStatusText(ctx);
 
