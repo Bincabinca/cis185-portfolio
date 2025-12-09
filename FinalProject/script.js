@@ -223,6 +223,9 @@ window.addEventListener('load', function(){
     }
 
     function displayStatusText(context) {
+        //Reset text alignment to prevent shift issues
+        context.textAlign = 'left';
+        
         //Display score and lives during gameplay
         if (!gameOver) {
             context.font = '40px Helvetica';
@@ -296,6 +299,7 @@ window.addEventListener('load', function(){
         gameOver = false;
         health = 3;
         lastCollisionTime = 0;
+
         lastTime = 0;
         enemyTimer = 0;
         randomEnemyInterval = Math.random() * 1000 + 500;
