@@ -88,10 +88,31 @@ window.addEventListener('load', function(){
         
             onGround(){
                 return this.y >= this.gameHeight - this.height; //If player is standing on solid ground
+                }
+            }
         }
-    }
 
     class Background {
+        constructor(gameWidth, gameHeight) {
+            this.gameWidth = gameWidth;
+            this.gameHeight = gameHeight;
+            this.image = document.getElementById('backgroundImage');
+            this.x = 0;
+            this.y = 0;
+            this.width = 2400;
+            this.height = 720;
+            this.speed = 20;
+        }
+        draw(context) {
+            //Draw two images side by side to create looping effect
+            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+            //this.speed accounts for gap between two images when scrolling
+            context.drawImage(this.image, this.x + this.width - this.speed, this.y, this.width, this.height);
+        }
+        update() {
+            this.x -= this.speed; //Scroll background to the left
+            if (this.x < 0 - this.width) this.x = 0; //Reset background position to create loop
+        }
     }
 
     class Enemy {
@@ -103,11 +124,14 @@ window.addEventListener('load', function(){
     function displayStatusText() {
     }
 
+    //Instantiate objects
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
+    const background = new Background(canvas.width, canvas.height);
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas between each animation loop
+        background.draw(ctx); //Draw background first so player displays on top
         player.draw(ctx);
         player.update(input);
         requestAnimationFrame(animate); //Calls animate function over and over to create loop
